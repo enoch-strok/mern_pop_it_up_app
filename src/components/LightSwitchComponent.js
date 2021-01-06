@@ -4,22 +4,24 @@ class LightSwitch extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            position: "on"
+            age: this.props.age
         };
     }
-    flipSwitch = () => {
-        if( this.state.position === "On" ) {
-            this.setState({ position: "Off" });
-        } else {
-            this.setState({ position: "On" });
-        }
+    changeAge = () => {
+        let newAge = this.state.age +1;
+        this.setState({age: newAge})
     }
 
     render(){
+        const { firstName, lastName, age, hairColor } = this.props;
         return(
             <fieldset>
-                <p>The light is currently {this.state.position}</p>
-                <button onClick={ this.flipSwitch }>Flip Switch</button>
+                <section>
+                <h1>My name is { lastName }, { firstName}  </h1>
+                <p>Age:  {this.state.age}</p>
+                <p>Hair Color: { hairColor }</p>
+                </section>
+                <button onClick={ this.changeAge }>Flip Switch</button>
             </fieldset>
         );
     }
